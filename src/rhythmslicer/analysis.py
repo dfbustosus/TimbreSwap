@@ -1,15 +1,21 @@
 # src/rhythmslicer/analysis.py
-
 import librosa
 import numpy as np
 import logging
-from typing import Tuple, Any
-
+from typing import Any
+from dataclasses import dataclass
 from .config import config
 
 logger = logging.getLogger(__name__)
+@dataclass
+class AudioAnalysisResult:
+    y_percussive: np.ndarray
+    y_harmonic: np.ndarray
+    tempo: float
+    beat_frames: np.ndarray
+    sr: int
 
-def analyze_audio(file_path: str) -> Tuple[np.ndarray, np.ndarray, float, np.ndarray, int]:
+def analyze_audio(file_path: str) -> AudioAnalysisResult:
     """
     Loads and analyzes an audio file for its rhythmic and harmonic components.
 
@@ -52,4 +58,10 @@ def analyze_audio(file_path: str) -> Tuple[np.ndarray, np.ndarray, float, np.nda
     )
     logger.info(f"Analysis complete. Detected Tempo: {np.mean(tempo):.2f} BPM.")
 
-    return y_percussive, y_harmonic, tempo, beat_frames, sr
+    return AudioAnalysisResult(
+        y_percussive=y_percussive,
+        y_harmonic=y_harmonic,
+        tempo=tempo,
+        beat_frames=beat_frames,
+        sr=sr
+    )

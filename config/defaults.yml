@@ -1,0 +1,9 @@
+# Parameters for librosa.beat.beat_track
+beat_tracker:
+  units: "frames"
+  tightness: 100
+
+# Parameters for librosa.effects.hpss
+hpss:
+  margin: 1.0
+  kernel_size: 31

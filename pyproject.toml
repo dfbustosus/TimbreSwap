@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rhythmslicer"
+version = "0.1.0"
+authors = [
+  { name="Your Name", email="your.email@example.com" },
+]
+description = "A tool to analyze and slice audio files based on rhythm."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file="LICENSE" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Multimedia :: Sound/Audio :: Analysis",
+]
+
+# Core project dependencies
+dependencies = [
+    "librosa>=0.9.0",
+    "numpy",
+    "soundfile",
+    "pyyaml",
+    "typer[all]",
+]
+
+[project.optional-dependencies]
+# Dependencies for developers (e.g., for running tests)
+dev = [
+    "pytest",
+    "black",
+]
+
+[project.scripts]
+# This points to the `app` object inside the rhythmslicer/cli.py file.
+rhythmslicer = "rhythmslicer.cli:app"

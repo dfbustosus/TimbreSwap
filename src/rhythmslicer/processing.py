@@ -26,4 +26,4 @@ def slice_audio_on_beats(
         slices.append(waveform[start:end])
 
     logger.info("Slicing process complete.")
-    return slices # <--- ADD THIS LINE
+    return slices

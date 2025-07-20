@@ -38,3 +38,4 @@ dev = [
 [project.scripts]
 # This points to the `app` object inside the rhythmslicer/cli.py file.
 rhythmslicer = "rhythmslicer.cli:app"
+timbrematcher = "timbrematcher.cli:app"
